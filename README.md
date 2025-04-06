@@ -17,14 +17,15 @@ The simulation models a traffic domain that includes various traffic signs, ligh
 Before running the simulation, ensure that the Clingo solver is installed on your system. Clingo is an ASP (Answer Set Programming) solver used for logic-based reasoning. Follow these steps to install Clingo:
 
 ### For Ubuntu/Linux:
-\`\`\`bash
+```
 sudo apt-get install gringo
-\`\`\`
+```
 
 ### For macOS:
 Clingo can be installed using Homebrew:
-```bash
+```
 brew install clingo
+```
 
 ### For Windows:
 Clingo can be installed on Windows using the binary releases provided by the Potassco team. Follow these steps:
