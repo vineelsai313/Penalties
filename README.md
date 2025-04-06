@@ -1,7 +1,7 @@
 # Traffic Norms Simulation in AOPL and ASP
 
 ## Overview
-This repository contains the implementation of a traffic norms simulation designed to explore how agents react in various traffic scenarios, particularly focusing on emergency vs. non-emergency situations. The simulation is developed using AOPL (Agent-Oriented Programming Language) and ASP (Answer Set Programming).
+This repository contains the implementation of a traffic norms simulation designed to explore how agents react in various traffic scenarios, particularly focusing on emergency vs. non-emergency situations. The simulation is developed using AOPL (Authorization and Obligation Policy Language) and ASP (Answer Set Programming).
 
 ## Description
 The simulation models a traffic domain that includes various traffic signs, lights, and other regulatory elements. It defines policies for vehicular behavior in response to these elements under different circumstances, including emergency responses.
