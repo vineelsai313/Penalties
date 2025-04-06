@@ -52,13 +52,13 @@ To run the simulation, follow these steps:
 To facilitate the integration of AOPL policies into our ASP-based framework, we have developed `AOPL_to_ASP_translator.py`, a Python-based translator. This tool automates the translation of policies encoded in AOPL into ASP, enhancing the efficiency of policy implementation and execution within the system.
 
 ### Functionality
-The translator takes a text file containing AOPL policies as input. These policies include details on associated penalties, as defined in the extended AOPL version presented in Section 4.1 of our documentation. Utilizing the reified logic programming encoding technique introduced by Inclezan (2023), the translator outputs ASP encodings for all provided policies and penalties.
+The translator takes a text file containing AOPL policies as input. These policies include details on associated penalties, as defined in the extended AOPL version presented in our documentation. Utilizing the reified logic programming encoding technique introduced by Inclezan (2023), the translator outputs ASP encodings for all provided policies and penalties.
 
 ### Usage
 To use the AOPL to ASP translator, follow these steps:
 
 1. Ensure that `AOPL_to_ASP_translator.py` is located in your working directory.
-2. Prepare a text file containing the AOPL policies for your specific domain. Ensure that this file adheres to the syntax and structure outlined in Section 4.1.
+2. Prepare a text file containing the AOPL policies for your specific domain. Ensure that this file adheres to the syntax and structured outline.
 3. Execute the translator via the command line by running the following command:
    ```bash
    python AOPL_to_ASP_translator.py your_policy_file.txt
