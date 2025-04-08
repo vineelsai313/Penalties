@@ -7,11 +7,12 @@ This repository contains the implementation of a traffic norms simulation design
 The simulation models a traffic domain that includes various traffic signs, lights, and other regulatory elements. It defines policies for vehicular behavior in response to these elements under different circumstances, including emergency responses.
 
 ### Files and Directories
-- **AOPLtranslation4.txt**: Contains AOPL translations necessary for setting up the simulation environment.
+- **AOPLtranslation4.txt**: Contains ASP rules to determine which policy rules are active, based on the translation from AOPL to ASP.
 - **dynamic_domain.txt**: Includes code and data for the traffic norms domain, detailing traffic lights, signs, pedestrian crossings, and other domain-specific elements.
 - **penalty_and_time.txt**: Manages penalties and time calculations within the simulation. It includes penalty priorities and time adjustments based on the traffic norms.
 - **policies11.txt**: Defines the policies and obligations that vehicles must adhere to within the traffic domain, detailing operational rules under various scenarios.
-- **test1scenario1.txt**: Describes specific test scenarios including starting points, goals, and whether the situation is an emergency or non-emergency.
+- **test1scenario1.txt - test1scenario13.txt**: Describes specific test scenarios including starting points and goals, for emergency situations.
+- **test2scenario1.txt - test2scenario13.txt**: Describes specific test scenarios including starting points and goals, for non-emergency situations.
 
 ## Installation
 Before running the simulation, ensure that the Clingo solver is installed on your system. Clingo is an ASP (Answer Set Programming) solver used for logic-based reasoning. Follow these steps to install Clingo:
