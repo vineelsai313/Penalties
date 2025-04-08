@@ -62,5 +62,7 @@ To use the AOPL to ASP translator, follow these steps:
 2. Prepare a text file containing the AOPL policies for your specific domain. Ensure that this file adheres to the syntax and structured outline.
 3. Execute the translator via the command line by running the following command:
    ```bash
-   python AOPL_to_ASP_translator.py 
+   python AOPL_to_ASP_translator.py
+   You will be prompted to enter the name of the input text file containing policies.
+4. The output will be stored in a text file named "ASP_policies.txt" in the same folder.
 
