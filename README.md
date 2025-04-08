@@ -45,6 +45,8 @@ To run the simulation, follow these steps:
 3. Execute the simulation using Clingo with the main AOPL and ASP files. For example (this is an example command, adjust as necessary based on your file configuration):
    ```bash
    clingo AOPLtranslation4.txt dynamic_domain.txt penalty_and_time.txt policies11.txt test1scenario1.txt
+   ```
+   Substitute **test1scenario1.txt** with the scenario file of your choice.
 4. Review the output that Clingo returns, which will detail the results of the simulation based on the test scenarios provided in test1scenario1.txt.
 
 ## AOPL to ASP Translator
