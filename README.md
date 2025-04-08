@@ -63,6 +63,7 @@ To use the AOPL to ASP translator, follow these steps:
 3. Execute the translator via the command line by running the following command:
    ```bash
    python AOPL_to_ASP_translator.py
+   ```
    You will be prompted to enter the name of the input text file containing policies.
-5. The output will be stored in a text file named "ASP_policies.txt" in the same folder.
+4. The output will be stored in a text file named "ASP_policies.txt" in the same folder.
 
