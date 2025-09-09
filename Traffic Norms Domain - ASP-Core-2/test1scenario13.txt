@@ -1,0 +1,18 @@
+%===========================
+
+speed(5;35;55;75;95).
+
+holds(at_loc(4), 0).
+holds(light_color(red, 3, 1), 1).
+holds(light_color(green, 3, 1), 2).
+holds(pedestrians_are_crossing(2), 4).
+
+%===========================
+
+%===========================
+
+goal(I) :- holds(at_loc(13), I), step(I).
+
+%===========================
+
+emergency.

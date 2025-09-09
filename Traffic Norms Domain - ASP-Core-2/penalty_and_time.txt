@@ -1,0 +1,73 @@
+add_penalty(R, P, I) :- rule(R),
+             holds(R, I), 
+             head(R, neg(permitted(E))), 
+             occurs(E, I),
+             penalty(R, P). 
+
+
+% General form:
+add_penalty(R, P, I) :- holds(R, I), 
+                 head(R, obl(E)), 
+				 action(E),
+                 not occurs(E, I),
+                 penalty(R, P).
+
+% Not needed: no policy rule starts with obl(drive(L1, L2, S))
+%add_penalty(R, P, I) :- holds(R, I), 
+%                head(R, obl(drive(L1, L2, S))), 
+%                not occurs(drive(L1, L2, S), I),
+%                penalty(R, P).
+
+%add_penalty(R, P, I) :- rule(R),
+%                holds(R, I), 
+%                head(R, obl(stop(L))), 
+%                not occurs(stop(L), I),
+%                not -occurs(stop(L), I),
+%                penalty(R, P).
+
+% General form:
+add_penalty(R, P, I) :- holds(R, I), 
+                 head(R, obl(neg(E))), 
+                 occurs(E, I),
+                 penalty(R, P).
+
+%add_penalty(R, P, I) :- rule(R),
+%                holds(R, I), 
+%                head(R, obl(neg(drive(L1,L2,S)))), 
+%                occurs(drive(L1,L2,S), I),
+%                penalty(R, P).
+
+% Not needed: no policy rule starts with obl(-stop(L))
+%add_penalty(R, P, I) :- holds(R, I), 
+%                head(R, obl(neg(stop(L)))), 
+%                occurs(stop(L), I),
+%                penalty(R, P).
+
+%cumulative_penalty(N) :- #sum{P, R, I: add_penalty(R, P, I)} = N.
+:- cumulative_penalty(N), N > 50.
+% #show add_penalty/3.
+%#show cumulative_penalty/1.
+
+add_time(5, I) :- occurs(drive(L1, L2, S), I), S > 55.
+add_time(10, I) :- occurs(drive(L1, L2, S), I), S > 35, S <= 55.
+add_time(15, I) :- occurs(drive(L1, L2, S), I), S <= 35.
+add_time(2, I) :- occurs(stop(L), I).
+
+cumulative_time(N) :- #sum{T,I: add_time(T, I)} = N.
+#show cumulative_time/1.
+
+% -----------------------
+
+% In non-emergency situations, minimize penalty first (highest priority)
+penalty_priority(2) :- non_emergency.   % highest priority
+time_priority(1) :- non_emergency.	% lowest priority
+
+% In emergency situations, minimize time first (highest priority)
+time_priority(2) :- emergency.		% highest priority
+penalty_priority(1) :- emergency.	% lowest priority
+	  
+:~ add_penalty(R, P, I), penalty_priority(Y). [P@Y, R, I]
+:~ add_time(T, I), time_priority(Y). [T@Y, I]		  
+
+#show emergency/0.
+#show non_emergency/0.

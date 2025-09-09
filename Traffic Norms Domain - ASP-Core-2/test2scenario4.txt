@@ -1,0 +1,16 @@
+%===========================
+
+holds(at_loc(9), 0).
+holds(school_bus_is_stopped(13, 14), 2).
+holds(school_bus_is_stopped(13, 14), 3).
+
+%===========================
+
+%===========================
+
+goal(I) :- holds(at_loc(14), I), step(I).
+
+%===========================
+
+% Input:
+non_emergency.

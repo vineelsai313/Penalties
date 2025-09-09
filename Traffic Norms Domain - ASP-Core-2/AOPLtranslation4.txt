@@ -1,0 +1,51 @@
+body(R, b(R)) :- rule(R).
+holds(R, I) :- type(R, strict), 
+               holds(b(R), I), 
+			   action_is_permissible(R, I),
+               step(I).
+holds(R, I) :- type(R, defeasible), 
+               holds(b(R), I), 
+               opp(R, O), 
+               not holds(O, I), 
+               not holds(ab(R), I), %rule R is not is overwritten by another rule as specified using an AOPL rule
+			   action_is_permissible(R, I),
+               step(I).
+
+-holds(B, I) :- body(R, B), mbr(B, F), fluent(F), -holds(F, I).
+-holds(B, I) :- body(R, B), mbr(B, neg(F)), fluent(F), holds(F, I).
+-holds(B, I) :- body(R, B), mbr(B, S), static(S), -holds(S), step(I).
+-holds(B, I) :- body(R, B), mbr(B, neg(S)), static(S), holds(S), step(I).
+holds(B, I) :- body(R, B), step(I), not -holds(B, I), step(I), not goal(I).
+
+holds(ab(R2), I) :- prefer(R1, R2), 
+                    holds(b(R1), I),
+                    step(I).
+holds(Hd, I) :- rule(R), 
+                holds(R, I), 
+                head(R, Hd),
+                step(I).
+				
+action_in_rule(R, E) :- head(R, permitted(E)).
+action_in_rule(R, E) :- head(R, neg(permitted(E))).
+action_in_rule(R, E) :- head(R, obl(E)), action(E).
+action_in_rule(R, E) :- head(R, obl(neg(E))), action(E).
+action_in_rule(R, E) :- head(R, neg(obl(E))), action(E).
+action_in_rule(R, E) :- head(R, neg(obl(neg(E)))), action(E).
+
+action_is_permissible(R, I) :- action_in_rule(R, E), not -occurs(E, I), step(I), not goal(I).
+
+opp(R, permitted(E)) :- head(R, neg(permitted(E))).
+opp(R, neg(permitted(E))) :- head(R, permitted(E)).
+opp(R, obl(H)) :- head(R, neg(obl(H))).
+opp(R, neg(obl(H))) :- head(R, obl(H)).
+
+num(0..100).
+holds(gt(X, Y)) :- X > Y, num(X), num(Y).
+holds(gte(X, Y)) :- X >= Y, num(X), num(Y).
+holds(lt(X, Y)) :- X < Y, num(X), num(Y).
+holds(lte(X, Y)) :- X <= Y, num(X), num(Y).
+
+static(gt(X, Y)) :- num(X), num(Y).
+static(gte(X, Y)) :- num(X), num(Y).
+static(lt(X, Y)) :- num(X), num(Y).
+static(lte(X, Y)) :- num(X), num(Y).
